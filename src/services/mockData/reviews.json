@@ -1,0 +1,162 @@
+[
+  {
+    "id": "1",
+    "productId": "1",
+    "userName": "Sarah Johnson",
+    "rating": 5,
+    "comment": "Amazing sound quality and the noise cancellation works perfectly! I use these for work calls and music - couldn't be happier with the purchase.",
+    "date": "2024-01-15T10:30:00Z"
+  },
+  {
+    "id": "2",
+    "productId": "1",
+    "userName": "Mike Chen",
+    "rating": 4,
+    "comment": "Great headphones overall. Battery life is as advertised and they're comfortable for long listening sessions. The only minor issue is the case could be more compact.",
+    "date": "2024-01-10T14:22:00Z"
+  },
+  {
+    "id": "3",
+    "productId": "1",
+    "userName": "Emily Rodriguez",
+    "rating": 5,
+    "comment": "Best headphones I've owned! The active noise cancellation is incredible and they pair easily with all my devices.",
+    "date": "2024-01-08T09:15:00Z"
+  },
+  {
+    "id": "4",
+    "productId": "2",
+    "userName": "David Kim",
+    "rating": 4,
+    "comment": "Soft and comfortable t-shirt. The organic cotton feels great and it's held up well after multiple washes. True to size.",
+    "date": "2024-01-12T16:45:00Z"
+  },
+  {
+    "id": "5",
+    "productId": "2",
+    "userName": "Jessica Martinez",
+    "rating": 4,
+    "comment": "Love the fit and feel of this shirt. The fabric is high quality and the color hasn't faded after washing.",
+    "date": "2024-01-05T11:20:00Z"
+  },
+  {
+    "id": "6",
+    "productId": "3",
+    "userName": "Robert Thompson",
+    "rating": 5,
+    "comment": "This coffee maker has transformed my morning routine! The built-in grinder makes such a difference in flavor. Programming feature works perfectly.",
+    "date": "2024-01-14T07:30:00Z"
+  },
+  {
+    "id": "7",
+    "productId": "3",
+    "userName": "Lisa Wang",
+    "rating": 5,
+    "comment": "Excellent coffee maker. The thermal carafe keeps coffee hot for hours and the programmable settings are very convenient.",
+    "date": "2024-01-11T08:45:00Z"
+  },
+  {
+    "id": "8",
+    "productId": "3",
+    "userName": "James Wilson",
+    "rating": 4,
+    "comment": "Makes great coffee and the grinder is a nice touch. Takes up a bit of counter space but worth it for the quality.",
+    "date": "2024-01-09T19:10:00Z"
+  },
+  {
+    "id": "9",
+    "productId": "4",
+    "userName": "Amanda Foster",
+    "rating": 4,
+    "comment": "Great running shoes! Very comfortable and lightweight. I've run several 10Ks in them with no issues. Good arch support.",
+    "date": "2024-01-13T17:25:00Z"
+  },
+  {
+    "id": "10",
+    "productId": "4",
+    "userName": "Carlos Rivera",
+    "rating": 5,
+    "comment": "Perfect for my daily runs. The cushioning is excellent and they're very breathable. Highly recommend for serious runners.",
+    "date": "2024-01-07T06:15:00Z"
+  },
+  {
+    "id": "11",
+    "productId": "6",
+    "userName": "Nicole Brown",
+    "rating": 5,
+    "comment": "Beautiful denim jacket with authentic vintage feel. The fit is perfect and the quality is outstanding. Gets lots of compliments!",
+    "date": "2024-01-16T13:40:00Z"
+  },
+  {
+    "id": "12",
+    "productId": "6",
+    "userName": "Kevin Lee",
+    "rating": 4,
+    "comment": "Great jacket, love the vintage wash. Runs slightly large so consider sizing down. Very well made and durable.",
+    "date": "2024-01-06T15:55:00Z"
+  },
+  {
+    "id": "13",
+    "productId": "7",
+    "userName": "Rachel Green",
+    "rating": 4,
+    "comment": "Perfect starter plants! All three are thriving and the pots are beautiful. Great value for money and came with care instructions.",
+    "date": "2024-01-04T12:30:00Z"
+  },
+  {
+    "id": "14",
+    "productId": "8",
+    "userName": "Tyler Johnson",
+    "rating": 5,
+    "comment": "Best yoga mat I've used. The thickness provides great cushioning and it doesn't slip at all. The alignment guides are helpful too.",
+    "date": "2024-01-17T18:20:00Z"
+  },
+  {
+    "id": "15",
+    "productId": "8",
+    "userName": "Melissa Davis",
+    "rating": 5,
+    "comment": "Excellent quality mat. Very stable during poses and easy to clean. The eco-friendly materials are a nice bonus.",
+    "date": "2024-01-03T20:10:00Z"
+  },
+  {
+    "id": "16",
+    "productId": "9",
+    "userName": "Alex Park",
+    "rating": 4,
+    "comment": "Comfortable ergonomic design and accurate tracking. Battery life is impressive. The customizable buttons are very useful for productivity.",
+    "date": "2024-01-02T09:35:00Z"
+  },
+  {
+    "id": "17",
+    "productId": "10",
+    "userName": "Sophia Taylor",
+    "rating": 5,
+    "comment": "Gorgeous leather bag! The craftsmanship is exceptional and it fits everything I need. The adjustable strap is perfect for different occasions.",
+    "date": "2024-01-18T14:50:00Z"
+  },
+  {
+    "id": "18",
+    "productId": "11",
+    "userName": "Michael Anderson",
+    "rating": 4,
+    "comment": "Sharp knives that make food prep much easier. The storage block is well-designed and the handles are comfortable to grip.",
+    "date": "2024-01-01T16:25:00Z"
+  },
+  {
+    "id": "19",
+    "productId": "12",
+    "userName": "Jennifer White",
+    "rating": 4,
+    "comment": "Great resistance band set for home workouts. The variety of resistance levels is perfect and the exercise guide is helpful.",
+    "date": "2024-01-19T11:15:00Z"
+  },
+  {
+    "id": "20",
+    "productId": "12",
+    "userName": "Daniel Miller",
+    "rating": 4,
+    "comment": "Good quality bands that provide excellent resistance. The door anchor works well and makes it easy to do a full body workout at home.",
+    "date": "2024-01-20T19:40:00Z"
+  }
+]
