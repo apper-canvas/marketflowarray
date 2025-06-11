@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import ApperIcon from './ApperIcon';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
 
 const ProductImages = ({ images, productName }) => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -22,18 +23,18 @@ const ProductImages = ({ images, productName }) => {
         {/* Navigation Arrows */}
         {images.length > 1 && (
           <>
-            <button
+            <Button
               onClick={() => setSelectedImage(selectedImage > 0 ? selectedImage - 1 : images.length - 1)}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md transition-all duration-200"
             >
               <ApperIcon name="ChevronLeft" size={20} />
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => setSelectedImage(selectedImage < images.length - 1 ? selectedImage + 1 : 0)}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md transition-all duration-200"
             >
               <ApperIcon name="ChevronRight" size={20} />
-            </button>
+            </Button>
           </>
         )}
 
@@ -49,12 +50,12 @@ const ProductImages = ({ images, productName }) => {
       {images.length > 1 && (
         <div className="grid grid-cols-4 gap-2">
           {images.map((image, index) => (
-            <motion.button
+            <Button
               key={index}
               onClick={() => setSelectedImage(index)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`aspect-square rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+              className={`aspect-square rounded-lg overflow-hidden border-2 transition-all duration-200 p-0 ${
                 selectedImage === index
                   ? 'border-accent shadow-md'
                   : 'border-gray-200 hover:border-gray-300'
@@ -65,7 +66,7 @@ const ProductImages = ({ images, productName }) => {
                 alt={`${productName} - Thumbnail ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-            </motion.button>
+            </Button>
           ))}
         </div>
       )}

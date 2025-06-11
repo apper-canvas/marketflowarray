@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import ApperIcon from './ApperIcon';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import Input from '@/components/atoms/Input'; // New import
+import Checkbox from '@/components/atoms/Checkbox'; // New import
+import Button from '@/components/atoms/Button'; // New import
+import Select from '@/components/atoms/Select'; // New import
 
 const FilterSidebar = ({ filters, onFilterChange, products, onClearAll }) => {
   const [priceRange, setPriceRange] = useState([filters.priceRange[0], filters.priceRange[1]]);
@@ -34,12 +38,12 @@ const FilterSidebar = ({ filters, onFilterChange, products, onClearAll }) => {
     <div className="bg-white rounded-lg p-6 shadow-sm">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-lg font-semibold text-primary">Filters</h2>
-        <button
+        <Button
           onClick={onClearAll}
-          className="text-sm text-secondary hover:text-primary transition-colors duration-200"
+          className="text-sm text-secondary hover:text-primary transition-colors duration-200 p-0 bg-transparent hover:bg-transparent" // Adjust Button styling for text-only
         >
           Clear All
-        </button>
+        </Button>
       </div>
 
       <div className="space-y-6">
@@ -49,11 +53,9 @@ const FilterSidebar = ({ filters, onFilterChange, products, onClearAll }) => {
           <div className="space-y-2">
             {categories.map(category => (
               <label key={category} className="flex items-center space-x-2 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
                   checked={filters.category === category}
                   onChange={() => handleCategoryChange(category)}
-                  className="w-4 h-4 text-accent focus:ring-accent border-gray-300 rounded"
                 />
                 <span className="text-sm text-secondary hover:text-primary transition-colors duration-200">
                   {category}
@@ -68,25 +70,25 @@ const FilterSidebar = ({ filters, onFilterChange, products, onClearAll }) => {
           <h3 className="text-sm font-semibold text-primary mb-3">Price Range</h3>
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
-              <input
+              <Input
                 type="number"
                 value={priceRange[0]}
                 onChange={(e) => handlePriceChange([parseInt(e.target.value) || 0, priceRange[1]])}
-                className="w-20 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+                className="w-20 px-2 py-1 text-sm"
                 min="0"
                 max="1000"
               />
               <span className="text-secondary">to</span>
-              <input
+              <Input
                 type="number"
                 value={priceRange[1]}
                 onChange={(e) => handlePriceChange([priceRange[0], parseInt(e.target.value) || 1000])}
-                className="w-20 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+                className="w-20 px-2 py-1 text-sm"
                 min="0"
                 max="1000"
               />
             </div>
-            <input
+            <Input
               type="range"
               min="0"
               max="1000"
@@ -103,11 +105,9 @@ const FilterSidebar = ({ filters, onFilterChange, products, onClearAll }) => {
           <div className="space-y-2 max-h-32 overflow-y-auto">
             {brands.map(brand => (
               <label key={brand} className="flex items-center space-x-2 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
                   checked={filters.brand === brand}
                   onChange={() => handleBrandChange(brand)}
-                  className="w-4 h-4 text-accent focus:ring-accent border-gray-300 rounded"
                 />
                 <span className="text-sm text-secondary hover:text-primary transition-colors duration-200">
                   {brand}
@@ -123,7 +123,7 @@ const FilterSidebar = ({ filters, onFilterChange, products, onClearAll }) => {
             <h3 className="text-sm font-semibold text-primary mb-3">Sizes</h3>
             <div className="flex flex-wrap gap-2">
               {sizes.map(size => (
-                <button
+                <Button
                   key={size}
                   onClick={() => handleSizeChange(size)}
                   className={`px-3 py-1 text-sm border rounded-lg transition-all duration-200 ${
@@ -133,7 +133,7 @@ const FilterSidebar = ({ filters, onFilterChange, products, onClearAll }) => {
                   }`}
                 >
                   {size}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
@@ -142,11 +142,9 @@ const FilterSidebar = ({ filters, onFilterChange, products, onClearAll }) => {
         {/* In Stock Only */}
         <div>
           <label className="flex items-center space-x-2 cursor-pointer">
-            <input
-              type="checkbox"
+            <Checkbox
               checked={filters.inStockOnly || false}
               onChange={(e) => onFilterChange({ ...filters, inStockOnly: e.target.checked })}
-              className="w-4 h-4 text-accent focus:ring-accent border-gray-300 rounded"
             />
             <span className="text-sm text-primary">In Stock Only</span>
           </label>

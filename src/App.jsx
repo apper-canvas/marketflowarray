@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Layout from './Layout';
 import { routes } from './config/routes';
-import NotFound from './pages/NotFound';
+import NotFoundPage from '@/components/pages/NotFoundPage';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
           {routes.map(route => (
             <Route key={route.id} path={route.path} element={<route.component />} />
           ))}
-          <Route path="*" element={<NotFound />} />
+<Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
       <ToastContainer

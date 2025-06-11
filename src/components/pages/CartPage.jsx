@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify';
-import ApperIcon from '../components/ApperIcon';
-import CartItem from '../components/CartItem';
-import SkeletonLoader from '../components/SkeletonLoader';
-import ErrorState from '../components/ErrorState';
-import EmptyState from '../components/EmptyState';
-import { cartService, productService } from '../services';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import CartItem from '@/components/molecules/CartItem'; // Alias import
+import SkeletonLoader from '@/components/molecules/SkeletonLoader'; // Alias import
+import ErrorState from '@/components/molecules/ErrorState'; // Alias import
+import EmptyState from '@/components/molecules/EmptyState'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
+import { cartService, productService } from '@/services'; // Alias import
 
-const Cart = () => {
+const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState({});
   const [loading, setLoading] = useState(false);
@@ -152,12 +153,12 @@ const Cart = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold text-primary">Shopping Cart</h1>
-        <button
+        <Button
           onClick={handleClearCart}
-          className="text-error hover:text-error/80 text-sm font-medium transition-colors duration-200"
+          className="text-error hover:text-error/80 text-sm font-medium transition-colors duration-200 p-0 bg-transparent hover:bg-transparent"
         >
           Clear Cart
-        </button>
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -231,7 +232,7 @@ const Cart = () => {
             </div>
           )}
 
-          <motion.button
+          <Button
             onClick={() => navigate('/checkout')}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -239,14 +240,14 @@ const Cart = () => {
           >
             <ApperIcon name="CreditCard" size={20} />
             <span>Proceed to Checkout</span>
-          </motion.button>
+          </Button>
 
-          <button
+          <Button
             onClick={() => navigate('/shop')}
-            className="w-full mt-3 text-accent hover:text-accent/80 py-2 text-sm font-medium transition-colors duration-200"
+            className="w-full mt-3 text-accent hover:text-accent/80 py-2 text-sm font-medium transition-colors duration-200 p-0 bg-transparent hover:bg-transparent"
           >
             Continue Shopping
-          </button>
+          </Button>
 
           {/* Trust Badges */}
           <div className="mt-6 pt-6 border-t">
@@ -271,4 +272,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartPage;

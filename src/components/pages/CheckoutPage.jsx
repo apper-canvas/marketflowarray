@@ -2,16 +2,18 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
-import ApperIcon from '../components/ApperIcon';
-import CheckoutSteps from '../components/CheckoutSteps';
-import ShippingForm from '../components/ShippingForm';
-import PaymentForm from '../components/PaymentForm';
-import OrderSummary from '../components/OrderSummary';
-import SkeletonLoader from '../components/SkeletonLoader';
-import ErrorState from '../components/ErrorState';
-import { cartService, productService, orderService } from '../services';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import CheckoutSteps from '@/components/molecules/CheckoutSteps'; // Alias import
+import ShippingForm from '@/components/organisms/ShippingForm'; // Alias import
+import PaymentForm from '@/components/organisms/PaymentForm'; // Alias import
+import OrderSummary from '@/components/organisms/OrderSummary'; // Alias import
+import SkeletonLoader from '@/components/molecules/SkeletonLoader'; // Alias import
+import ErrorState from '@/components/molecules/ErrorState'; // Alias import
+import FormField from '@/components/molecules/FormField'; // New import
+import Button from '@/components/atoms/Button'; // New import
+import { cartService, productService, orderService } from '@/services'; // Alias import
 
-const Checkout = () => {
+const CheckoutPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState({});
   const [loading, setLoading] = useState(false);
@@ -218,109 +220,78 @@ const Checkout = () => {
                 <h2 className="text-xl font-semibold text-primary mb-6">Billing Information</h2>
                 
                 <div className="mb-6">
-                  <label className="flex items-center space-x-3">
-                    <input
-                      type="checkbox"
-                      checked={billingInfo.sameAsShipping}
-                      onChange={(e) => setBillingInfo(prev => ({ ...prev, sameAsShipping: e.target.checked }))}
-                      className="w-4 h-4 text-accent focus:ring-accent border-gray-300 rounded"
-                    />
-                    <span className="text-primary">Same as shipping address</span>
-                  </label>
+                  <FormField
+                    type="checkbox"
+                    label="Same as shipping address"
+                    value={billingInfo.sameAsShipping}
+                    onChange={(e) => setBillingInfo(prev => ({ ...prev, sameAsShipping: e.target.checked }))}
+                    id="sameAsShipping"
+                  />
                 </div>
 
                 {!billingInfo.sameAsShipping && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
-                        First Name *
-                      </label>
-                      <input
-                        type="text"
-                        value={billingInfo.firstName}
-                        onChange={(e) => setBillingInfo(prev => ({ ...prev, firstName: e.target.value }))}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-accent focus:border-accent outline-none"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
-                        Last Name *
-                      </label>
-                      <input
-                        type="text"
-                        value={billingInfo.lastName}
-                        onChange={(e) => setBillingInfo(prev => ({ ...prev, lastName: e.target.value }))}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-accent focus:border-accent outline-none"
-                        required
-                      />
-                    </div>
-                    <div className="md:col-span-2">
-                      <label className="block text-sm font-medium text-primary mb-2">
-                        Address *
-                      </label>
-                      <input
-                        type="text"
-                        value={billingInfo.address}
-                        onChange={(e) => setBillingInfo(prev => ({ ...prev, address: e.target.value }))}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-accent focus:border-accent outline-none"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
-                        City *
-                      </label>
-                      <input
-                        type="text"
-                        value={billingInfo.city}
-                        onChange={(e) => setBillingInfo(prev => ({ ...prev, city: e.target.value }))}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-accent focus:border-accent outline-none"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
-                        State *
-                      </label>
-                      <input
-                        type="text"
-                        value={billingInfo.state}
-                        onChange={(e) => setBillingInfo(prev => ({ ...prev, state: e.target.value }))}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-accent focus:border-accent outline-none"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
-                        ZIP Code *
-                      </label>
-                      <input
-                        type="text"
-                        value={billingInfo.zipCode}
-                        onChange={(e) => setBillingInfo(prev => ({ ...prev, zipCode: e.target.value }))}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-accent focus:border-accent outline-none"
-                        required
-                      />
-                    </div>
+                    <FormField
+                      label="First Name"
+                      type="text"
+                      value={billingInfo.firstName}
+                      onChange={(e) => setBillingInfo(prev => ({ ...prev, firstName: e.target.value }))}
+                      required
+                    />
+                    <FormField
+                      label="Last Name"
+                      type="text"
+                      value={billingInfo.lastName}
+                      onChange={(e) => setBillingInfo(prev => ({ ...prev, lastName: e.target.value }))}
+                      required
+                    />
+                    <FormField
+                      label="Address"
+                      type="text"
+                      value={billingInfo.address}
+                      onChange={(e) => setBillingInfo(prev => ({ ...prev, address: e.target.value }))}
+                      required
+                      wrapperClassName="md:col-span-2"
+                    />
+                    <FormField
+                      label="City"
+                      type="text"
+                      value={billingInfo.city}
+                      onChange={(e) => setBillingInfo(prev => ({ ...prev, city: e.target.value }))}
+                      required
+                    />
+                    <FormField
+                      label="State"
+                      type="text"
+                      value={billingInfo.state}
+                      onChange={(e) => setBillingInfo(prev => ({ ...prev, state: e.target.value }))}
+                      required
+                    />
+                    <FormField
+                      label="ZIP Code"
+                      type="text"
+                      value={billingInfo.zipCode}
+                      onChange={(e) => setBillingInfo(prev => ({ ...prev, zipCode: e.target.value }))}
+                      required
+                    />
                   </div>
                 )}
 
                 <div className="flex justify-between">
-                  <button
+                  <Button
                     onClick={handleBack}
                     className="flex items-center space-x-2 px-6 py-3 border border-gray-300 rounded-lg text-primary hover:bg-gray-50 transition-colors duration-200"
                   >
                     <ApperIcon name="ChevronLeft" size={16} />
                     <span>Back</span>
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={handleNext}
                     className="flex items-center space-x-2 bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-lg transition-colors duration-200"
                   >
                     <span>Continue</span>
                     <ApperIcon name="ChevronRight" size={16} />
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}
@@ -353,4 +324,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default CheckoutPage;

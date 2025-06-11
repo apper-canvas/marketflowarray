@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import ApperIcon from '../components/ApperIcon';
-import MainFeature from '../components/MainFeature';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import MainFeature from '@/components/organisms/MainFeature'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
 
-const Home = () => {
+const HomePage = () => {
   const navigate = useNavigate();
 
   const categories = [
@@ -34,7 +35,7 @@ const Home = () => {
             >
               Discover amazing products at unbeatable prices
             </motion.p>
-            <motion.button
+            <Button
               onClick={() => navigate('/shop')}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -44,7 +45,7 @@ const Home = () => {
               className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200"
             >
               Start Shopping
-            </motion.button>
+            </Button>
           </div>
         </div>
       </section>
@@ -127,4 +128,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

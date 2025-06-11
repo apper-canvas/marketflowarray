@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import ApperIcon from './ApperIcon';
-import ProductCard from './ProductCard';
-import SkeletonLoader from './SkeletonLoader';
-import { productService, cartService } from '../services';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import ProductCard from '@/components/molecules/ProductCard'; // Alias import
+import SkeletonLoader from '@/components/molecules/SkeletonLoader'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
+import { productService, cartService } from '@/services'; // Alias import
 
 const MainFeature = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -78,7 +79,7 @@ const MainFeature = () => {
         )}
 
         <div className="text-center">
-          <motion.button
+          <Button
             onClick={() => navigate('/shop')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -86,7 +87,7 @@ const MainFeature = () => {
           >
             <span>View All Products</span>
             <ApperIcon name="ArrowRight" size={16} />
-          </motion.button>
+          </Button>
         </div>
       </div>
     </section>

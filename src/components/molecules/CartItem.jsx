@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import ApperIcon from './ApperIcon';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
 
 const CartItem = ({ item, product, onUpdateQuantity, onRemove }) => {
   const navigate = useNavigate();
@@ -53,24 +54,24 @@ const CartItem = ({ item, product, onUpdateQuantity, onRemove }) => {
 
         {/* Quantity Controls */}
         <div className="flex items-center space-x-3">
-          <button
+          <Button
             onClick={() => handleQuantityChange(item.quantity - 1)}
             disabled={item.quantity <= 1}
             className="p-1 border border-gray-300 rounded hover:bg-gray-50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <ApperIcon name="Minus" size={16} />
-          </button>
+          </Button>
           
           <span className="text-lg font-semibold min-w-8 text-center">
             {item.quantity}
           </span>
           
-          <button
+          <Button
             onClick={() => handleQuantityChange(item.quantity + 1)}
             className="p-1 border border-gray-300 rounded hover:bg-gray-50 transition-colors duration-200"
           >
             <ApperIcon name="Plus" size={16} />
-          </button>
+          </Button>
         </div>
 
         {/* Total Price */}
@@ -81,12 +82,12 @@ const CartItem = ({ item, product, onUpdateQuantity, onRemove }) => {
         </div>
 
         {/* Remove Button */}
-        <button
+        <Button
           onClick={handleRemove}
           className="p-2 text-error hover:bg-error/10 rounded-lg transition-colors duration-200"
         >
           <ApperIcon name="Trash2" size={18} />
-        </button>
+        </Button>
       </div>
     </motion.div>
   );

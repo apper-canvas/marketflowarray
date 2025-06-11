@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import ApperIcon from './ApperIcon';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
 
 const EmptyState = ({ title, description, actionLabel, onAction, icon = 'Package' }) => {
   return (
@@ -18,14 +19,14 @@ const EmptyState = ({ title, description, actionLabel, onAction, icon = 'Package
       <h3 className="text-lg font-semibold text-primary mb-2">{title}</h3>
       <p className="text-secondary mb-6 max-w-md mx-auto">{description}</p>
       {actionLabel && onAction && (
-        <motion.button
+        <Button
           onClick={onAction}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
         >
           {actionLabel}
-        </motion.button>
+        </Button>
       )}
     </motion.div>
   );

@@ -1,9 +1,9 @@
-import Home from '../pages/Home';
-import Shop from '../pages/Shop';
-import ProductDetail from '../pages/ProductDetail';
-import Cart from '../pages/Cart';
-import Checkout from '../pages/Checkout';
-import OrderConfirmation from '../pages/OrderConfirmation';
+import HomePage from '@/components/pages/HomePage';
+import ShopPage from '@/components/pages/ShopPage';
+import ProductDetailPage from '@/components/pages/ProductDetailPage';
+import CartPage from '@/components/pages/CartPage';
+import CheckoutPage from '@/components/pages/CheckoutPage';
+import OrderConfirmationPage from '@/components/pages/OrderConfirmationPage';
 
 export const routes = [
   {
@@ -11,7 +11,7 @@ export const routes = [
     label: 'Home',
     path: '/',
     icon: 'Home',
-    component: Home,
+component: HomePage,
     showInNav: false
   },
   {
@@ -19,7 +19,7 @@ export const routes = [
     label: 'Shop',
     path: '/shop',
     icon: 'Store',
-    component: Shop,
+component: ShopPage,
     showInNav: true
   },
   {
@@ -27,7 +27,7 @@ export const routes = [
     label: 'Categories',
     path: '/categories',
     icon: 'Grid3X3',
-    component: Shop,
+component: ShopPage,
     showInNav: true
   },
   {
@@ -35,7 +35,7 @@ export const routes = [
     label: 'Product',
     path: '/product/:id',
     icon: 'Package',
-    component: ProductDetail,
+component: ProductDetailPage,
     showInNav: false
   },
   {
@@ -43,7 +43,7 @@ export const routes = [
     label: 'Cart',
     path: '/cart',
     icon: 'ShoppingCart',
-    component: Cart,
+component: CartPage,
     showInNav: false
   },
   {
@@ -51,7 +51,7 @@ export const routes = [
     label: 'Checkout',
     path: '/checkout',
     icon: 'CreditCard',
-    component: Checkout,
+component: CheckoutPage,
     showInNav: false
   },
   {
@@ -59,7 +59,7 @@ export const routes = [
     label: 'Order Confirmation',
     path: '/order-confirmation/:orderId',
     icon: 'CheckCircle',
-    component: OrderConfirmation,
+component: OrderConfirmationPage,
     showInNav: false
   }
 ];

@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import ApperIcon from '../components/ApperIcon';
-import SkeletonLoader from '../components/SkeletonLoader';
-import ErrorState from '../components/ErrorState';
-import { orderService, productService } from '../services';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import SkeletonLoader from '@/components/molecules/SkeletonLoader'; // Alias import
+import ErrorState from '@/components/molecules/ErrorState'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
+import { orderService, productService } from '@/services'; // Alias import
 
-const OrderConfirmation = () => {
+const OrderConfirmationPage = () => {
   const [order, setOrder] = useState(null);
   const [products, setProducts] = useState({});
   const [loading, setLoading] = useState(false);
@@ -247,15 +248,15 @@ const OrderConfirmation = () => {
 
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <motion.button
+        <Button
           onClick={() => navigate('/shop')}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="bg-accent hover:bg-accent/90 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200"
         >
           Continue Shopping
-        </motion.button>
-        <motion.button
+        </Button>
+        <Button
           onClick={() => window.print()}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -263,10 +264,10 @@ const OrderConfirmation = () => {
         >
           <ApperIcon name="Printer" size={16} />
           <span>Print Order</span>
-        </motion.button>
+        </Button>
       </div>
     </div>
   );
 };
 
-export default OrderConfirmation;
+export default OrderConfirmationPage;

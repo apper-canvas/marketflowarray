@@ -1,4 +1,6 @@
-import ApperIcon from './ApperIcon';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import FormField from '@/components/molecules/FormField'; // New import
+import Button from '@/components/atoms/Button'; // New import
 
 const PaymentForm = ({ data, onChange, onBack, onPlaceOrder, processing }) => {
   const handleChange = (field, value) => {
@@ -47,65 +49,45 @@ const PaymentForm = ({ data, onChange, onBack, onPlaceOrder, processing }) => {
       </div>
 
       <div className="space-y-4 mb-6">
-        <div>
-          <label className="block text-sm font-medium text-primary mb-2">
-            Cardholder Name *
-          </label>
-          <input
-            type="text"
-            value={data.cardholderName}
-            onChange={(e) => handleChange('cardholderName', e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all duration-200"
-            placeholder="John Smith"
-            required
-          />
-        </div>
+        <FormField
+          label="Cardholder Name"
+          type="text"
+          value={data.cardholderName}
+          onChange={(e) => handleChange('cardholderName', e.target.value)}
+          placeholder="John Smith"
+          required
+        />
         
-        <div>
-          <label className="block text-sm font-medium text-primary mb-2">
-            Card Number *
-          </label>
-          <input
-            type="text"
-            value={data.cardNumber}
-            onChange={(e) => handleChange('cardNumber', formatCardNumber(e.target.value))}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all duration-200"
-            placeholder="1234 5678 9012 3456"
-            maxLength="19"
-            required
-          />
-        </div>
+        <FormField
+          label="Card Number"
+          type="text"
+          value={data.cardNumber}
+          onChange={(e) => handleChange('cardNumber', formatCardNumber(e.target.value))}
+          placeholder="1234 5678 9012 3456"
+          maxLength="19"
+          required
+        />
         
         <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-primary mb-2">
-              Expiry Date *
-            </label>
-            <input
-              type="text"
-              value={data.expiryDate}
-              onChange={(e) => handleChange('expiryDate', formatExpiryDate(e.target.value))}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all duration-200"
-              placeholder="MM/YY"
-              maxLength="5"
-              required
-            />
-          </div>
+          <FormField
+            label="Expiry Date"
+            type="text"
+            value={data.expiryDate}
+            onChange={(e) => handleChange('expiryDate', formatExpiryDate(e.target.value))}
+            placeholder="MM/YY"
+            maxLength="5"
+            required
+          />
           
-          <div>
-            <label className="block text-sm font-medium text-primary mb-2">
-              CVV *
-            </label>
-            <input
-              type="text"
-              value={data.cvv}
-              onChange={(e) => handleChange('cvv', e.target.value.replace(/[^0-9]/gi, ''))}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all duration-200"
-              placeholder="123"
-              maxLength="4"
-              required
-            />
-          </div>
+          <FormField
+            label="CVV"
+            type="text"
+            value={data.cvv}
+            onChange={(e) => handleChange('cvv', e.target.value.replace(/[^0-9]/gi, ''))}
+            placeholder="123"
+            maxLength="4"
+            required
+          />
         </div>
       </div>
 
@@ -121,16 +103,16 @@ const PaymentForm = ({ data, onChange, onBack, onPlaceOrder, processing }) => {
       </div>
       
       <div className="flex justify-between">
-        <button
+        <Button
           type="button"
           onClick={onBack}
           className="flex items-center space-x-2 px-6 py-3 border border-gray-300 rounded-lg text-primary hover:bg-gray-50 transition-colors duration-200"
         >
           <ApperIcon name="ChevronLeft" size={16} />
           <span>Back</span>
-        </button>
+        </Button>
         
-        <button
+        <Button
           type="submit"
           disabled={processing}
           className="flex items-center space-x-2 bg-accent hover:bg-accent/90 disabled:bg-gray-400 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200"
@@ -146,7 +128,7 @@ const PaymentForm = ({ data, onChange, onBack, onPlaceOrder, processing }) => {
               <span>Place Order</span>
             </>
           )}
-        </button>
+        </Button>
       </div>
     </form>
   );

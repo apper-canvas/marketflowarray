@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import ApperIcon from './ApperIcon';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
 
 const ProductCard = ({ product, viewMode = 'grid', onAddToCart }) => {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ const ProductCard = ({ product, viewMode = 'grid', onAddToCart }) => {
                 ) : (
                   <span className="text-xs text-error bg-error/10 px-2 py-1 rounded-full">Out of Stock</span>
                 )}
-                <motion.button
+                <Button
                   onClick={handleAddToCart}
                   disabled={!product.inStock}
                   whileHover={{ scale: product.inStock ? 1.05 : 1 }}
@@ -63,7 +64,7 @@ const ProductCard = ({ product, viewMode = 'grid', onAddToCart }) => {
                   }`}
                 >
                   <ApperIcon name="ShoppingCart" size={16} />
-                </motion.button>
+                </Button>
               </div>
             </div>
           </div>
@@ -115,7 +116,7 @@ const ProductCard = ({ product, viewMode = 'grid', onAddToCart }) => {
           <span className="text-sm text-secondary">{product.brand}</span>
         </div>
 
-        <motion.button
+        <Button
           onClick={handleAddToCart}
           disabled={!product.inStock}
           whileHover={{ scale: product.inStock ? 1.05 : 1 }}
@@ -128,7 +129,7 @@ const ProductCard = ({ product, viewMode = 'grid', onAddToCart }) => {
         >
           <ApperIcon name="ShoppingCart" size={16} />
           <span>Add to Cart</span>
-        </motion.button>
+        </Button>
       </div>
     </motion.div>
   );

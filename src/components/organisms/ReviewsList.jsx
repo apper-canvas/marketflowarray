@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import ApperIcon from './ApperIcon';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
 
 const ReviewsList = ({ reviews, productId }) => {
   if (!reviews || reviews.length === 0) {

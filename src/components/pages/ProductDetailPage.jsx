@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
-import ApperIcon from '../components/ApperIcon';
-import ProductImages from '../components/ProductImages';
-import ReviewsList from '../components/ReviewsList';
-import SkeletonLoader from '../components/SkeletonLoader';
-import ErrorState from '../components/ErrorState';
-import { productService, reviewService, cartService } from '../services';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import ProductImages from '@/components/molecules/ProductImages'; // Alias import
+import ReviewsList from '@/components/organisms/ReviewsList'; // Alias import
+import SkeletonLoader from '@/components/molecules/SkeletonLoader'; // Alias import
+import ErrorState from '@/components/molecules/ErrorState'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
+import { productService, reviewService, cartService } from '@/services'; // Alias import
 
-const ProductDetail = () => {
+const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -126,16 +127,16 @@ const ProductDetail = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
       <nav className="flex items-center space-x-2 text-sm text-secondary mb-8">
-        <button onClick={() => navigate('/shop')} className="hover:text-primary">
+        <Button onClick={() => navigate('/shop')} className="hover:text-primary p-0 bg-transparent hover:bg-transparent">
           Shop
-        </button>
+        </Button>
         <ApperIcon name="ChevronRight" size={16} />
-        <button 
+        <Button 
           onClick={() => navigate(`/shop?category=${product.category.toLowerCase()}`)}
-          className="hover:text-primary"
+          className="hover:text-primary p-0 bg-transparent hover:bg-transparent"
         >
           {product.category}
-        </button>
+        </Button>
         <ApperIcon name="ChevronRight" size={16} />
         <span className="text-primary">{product.name}</span>
       </nav>
@@ -191,7 +192,7 @@ const ProductDetail = () => {
               <h3 className="text-lg font-semibold text-primary mb-3">Size</h3>
               <div className="flex flex-wrap gap-2">
                 {product.sizes.map(size => (
-                  <button
+                  <Button
                     key={size}
                     onClick={() => setSelectedSize(size)}
                     className={`px-4 py-2 border rounded-lg transition-all duration-200 ${
@@ -201,7 +202,7 @@ const ProductDetail = () => {
                     }`}
                   >
                     {size}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -211,26 +212,26 @@ const ProductDetail = () => {
           <div>
             <h3 className="text-lg font-semibold text-primary mb-3">Quantity</h3>
             <div className="flex items-center space-x-3">
-              <button
+              <Button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
                 className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
                 disabled={quantity <= 1}
               >
                 <ApperIcon name="Minus" size={16} />
-              </button>
+              </Button>
               <span className="text-lg font-semibold min-w-12 text-center">{quantity}</span>
-              <button
+              <Button
                 onClick={() => setQuantity(quantity + 1)}
                 className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
               >
                 <ApperIcon name="Plus" size={16} />
-              </button>
+              </Button>
             </div>
           </div>
 
           {/* Action Buttons */}
           <div className="space-y-3">
-            <motion.button
+            <Button
               onClick={handleAddToCart}
               disabled={!product.inStock || addingToCart}
               whileHover={{ scale: product.inStock ? 1.02 : 1 }}
@@ -249,9 +250,9 @@ const ProductDetail = () => {
                   <span>Add to Cart</span>
                 </>
               )}
-            </motion.button>
+            </Button>
 
-            <motion.button
+            <Button
               onClick={handleBuyNow}
               disabled={!product.inStock || addingToCart}
               whileHover={{ scale: product.inStock ? 1.02 : 1 }}
@@ -264,7 +265,7 @@ const ProductDetail = () => {
             >
               <ApperIcon name="CreditCard" size={20} />
               <span>Buy Now</span>
-            </motion.button>
+            </Button>
           </div>
 
           {/* Trust Badges */}
@@ -295,4 +296,4 @@ const ProductDetail = () => {
   );
 };
 
-export default ProductDetail;
+export default ProductDetailPage;

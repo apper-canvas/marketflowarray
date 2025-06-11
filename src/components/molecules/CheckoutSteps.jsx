@@ -1,4 +1,4 @@
-import ApperIcon from './ApperIcon';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
 
 const CheckoutSteps = ({ currentStep }) => {
   const steps = [

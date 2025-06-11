@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import ApperIcon from './ApperIcon';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
 
 const OrderSummary = ({ items, products, subtotal, shipping, tax, total }) => {
   const navigate = useNavigate();
@@ -78,13 +79,13 @@ const OrderSummary = ({ items, products, subtotal, shipping, tax, total }) => {
       )}
 
       {/* Continue Shopping Link */}
-      <button
+      <Button
         onClick={() => navigate('/shop')}
-        className="w-full text-accent hover:text-accent/80 py-2 text-sm font-medium transition-colors duration-200 flex items-center justify-center space-x-1"
+        className="w-full text-accent hover:text-accent/80 py-2 text-sm font-medium transition-colors duration-200 flex items-center justify-center space-x-1 p-0 bg-transparent hover:bg-transparent" // Adjust Button styling for text-only
       >
         <ApperIcon name="ArrowLeft" size={14} />
         <span>Continue Shopping</span>
-      </button>
+      </Button>
 
       {/* Trust Badges */}
       <div className="mt-6 pt-6 border-t">

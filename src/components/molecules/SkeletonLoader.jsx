@@ -1,3 +1,5 @@
+import React from 'react';
+
 const SkeletonLoader = ({ count = 1, type = 'default' }) => {
   const renderSkeleton = () => {
     switch (type) {

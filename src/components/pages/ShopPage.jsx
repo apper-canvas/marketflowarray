@@ -2,15 +2,17 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify';
-import ApperIcon from '../components/ApperIcon';
-import ProductCard from '../components/ProductCard';
-import FilterSidebar from '../components/FilterSidebar';
-import SkeletonLoader from '../components/SkeletonLoader';
-import ErrorState from '../components/ErrorState';
-import EmptyState from '../components/EmptyState';
-import { productService, cartService } from '../services';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import ProductCard from '@/components/molecules/ProductCard'; // Alias import
+import FilterSidebar from '@/components/organisms/FilterSidebar'; // Alias import
+import SkeletonLoader from '@/components/molecules/SkeletonLoader'; // Alias import
+import ErrorState from '@/components/molecules/ErrorState'; // Alias import
+import EmptyState from '@/components/molecules/EmptyState'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
+import Select from '@/components/atoms/Select'; // New import
+import { productService, cartService } from '@/services'; // Alias import
 
-const Shop = () => {
+const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -191,13 +193,13 @@ const Shop = () => {
         <div className="w-full lg:w-1/4">
           {/* Mobile Filter Toggle */}
           <div className="lg:hidden mb-4">
-            <button
+            <Button
               onClick={() => setShowFilters(!showFilters)}
               className="flex items-center justify-between w-full bg-white rounded-lg p-4 border border-gray-200"
             >
               <span className="font-medium text-primary">Filters</span>
               <ApperIcon name={showFilters ? "ChevronUp" : "ChevronDown"} size={20} />
-            </button>
+            </Button>
           </div>
 
           <AnimatePresence>
@@ -236,20 +238,20 @@ const Shop = () => {
 
             <div className="flex items-center gap-4">
               {/* Sort Dropdown */}
-              <select
+              <Select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+                className="px-3 py-2 text-sm" // Pass specific class to Select atom
               >
                 <option value="name">Sort by Name</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
                 <option value="rating">Highest Rated</option>
-              </select>
+              </Select>
 
               {/* View Toggle */}
               <div className="flex bg-gray-100 rounded-lg p-1">
-                <button
+                <Button
                   onClick={() => setViewMode('grid')}
                   className={`p-2 rounded transition-colors duration-200 ${
                     viewMode === 'grid' 
@@ -258,8 +260,8 @@ const Shop = () => {
                   }`}
                 >
                   <ApperIcon name="Grid3X3" size={18} />
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={() => setViewMode('list')}
                   className={`p-2 rounded transition-colors duration-200 ${
                     viewMode === 'list' 
@@ -268,7 +270,7 @@ const Shop = () => {
                   }`}
                 >
                   <ApperIcon name="List" size={18} />
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -280,41 +282,41 @@ const Shop = () => {
               {filters.category && (
                 <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm flex items-center gap-1">
                   Category: {filters.category}
-                  <button onClick={() => setFilters(prev => ({ ...prev, category: '' }))}>
+                  <Button onClick={() => setFilters(prev => ({ ...prev, category: '' }))} className="p-0 bg-transparent hover:bg-transparent">
                     <ApperIcon name="X" size={14} />
-                  </button>
+                  </Button>
                 </span>
               )}
               {filters.search && (
                 <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm flex items-center gap-1">
                   Search: {filters.search}
-                  <button onClick={() => setFilters(prev => ({ ...prev, search: '' }))}>
+                  <Button onClick={() => setFilters(prev => ({ ...prev, search: '' }))} className="p-0 bg-transparent hover:bg-transparent">
                     <ApperIcon name="X" size={14} />
-                  </button>
+                  </Button>
                 </span>
               )}
               {filters.brand && (
                 <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm flex items-center gap-1">
                   Brand: {filters.brand}
-                  <button onClick={() => setFilters(prev => ({ ...prev, brand: '' }))}>
+                  <Button onClick={() => setFilters(prev => ({ ...prev, brand: '' }))} className="p-0 bg-transparent hover:bg-transparent">
                     <ApperIcon name="X" size={14} />
-                  </button>
+                  </Button>
                 </span>
               )}
               {filters.size && (
                 <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm flex items-center gap-1">
                   Size: {filters.size}
-                  <button onClick={() => setFilters(prev => ({ ...prev, size: '' }))}>
+                  <Button onClick={() => setFilters(prev => ({ ...prev, size: '' }))} className="p-0 bg-transparent hover:bg-transparent">
                     <ApperIcon name="X" size={14} />
-                  </button>
+                  </Button>
                 </span>
               )}
-              <button 
+              <Button 
                 onClick={clearAllFilters}
-                className="text-sm text-secondary hover:text-primary underline"
+                className="text-sm text-secondary hover:text-primary underline p-0 bg-transparent hover:bg-transparent"
               >
                 Clear all
-              </button>
+              </Button>
             </div>
           )}
 
@@ -361,4 +363,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default ShopPage;

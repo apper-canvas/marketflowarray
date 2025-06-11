@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import ApperIcon from './ApperIcon';
+import ApperIcon from '@/components/ApperIcon'; // Alias import
+import Button from '@/components/atoms/Button'; // New import
 
 const ErrorState = ({ message, onRetry }) => {
   return (
@@ -13,7 +14,7 @@ const ErrorState = ({ message, onRetry }) => {
       </div>
       <h3 className="text-lg font-semibold text-primary mb-2">Something went wrong</h3>
       <p className="text-secondary mb-6 max-w-md mx-auto">{message}</p>
-      <motion.button
+      <Button
         onClick={onRetry}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -21,7 +22,7 @@ const ErrorState = ({ message, onRetry }) => {
       >
         <ApperIcon name="RotateCcw" size={16} />
         <span>Try Again</span>
-      </motion.button>
+      </Button>
     </motion.div>
   );
 };
